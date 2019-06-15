@@ -1,0 +1,41 @@
+name:          nats-messaging
+version:       0.1.0.0
+synopsis:      Haskell client library for the NATS messaging system.
+license:       BSD3
+build-type:    Simple
+cabal-version: >=2.0
+
+library
+  hs-source-dirs:     src
+  exposed-modules:    Network.Nats
+                    , Network.Nats.Message
+  default-language:   Haskell2010
+  ghc-options:       -Wall -Werror
+  build-depends:      base
+                    , bytestring
+                    , network
+                    , stm
+                    , safe-exceptions
+                    , aeson
+                    , text
+                    , atomic-primops
+                    , containers
+                    , uuid
+                    , random
+                    , unagi-chan
+                    , async
+  default-extensions: OverloadedStrings
+                    , DeriveGeneric
+                    , DisambiguateRecordFields
+                    , NamedFieldPuns
+  other-modules:      Network.Nats.Subscription
+
+executable nats-cat
+  main-is:            NatsCatMain.hs
+  ghc-options:       -Wall -rtsopts
+  build-depends:      base
+                    , nats-messaging
+                    , bytestring
+  default-language:   Haskell2010
+  default-extensions: OverloadedStrings
+                    , NamedFieldPuns
